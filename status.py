@@ -9,8 +9,6 @@ from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
-os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-
 api_service_name = "youtube"
 api_version = "v3"
 client_secrets_file = "secrets.json"
