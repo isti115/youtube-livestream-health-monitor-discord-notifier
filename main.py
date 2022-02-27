@@ -1,23 +1,31 @@
 import status
-import message
-import re
+import discord
 
+import json
 import time
 import datetime
+import re
+
+settings = json.load(open('settings.json'))
+
+def make_code_block(state):
+    return (
+        re.sub('"', '`',
+        re.sub("'([^,]*?)':", '\\1:',
+            f'```js\\n{state}\\n```'
+        ))
+    )
 
 def update(comment, st):
-    text = re.sub('"', '`', re.sub("'([^,]*?)':", '\\1:',
-      '**' + comment + ':**\\n```js\\n' + str(st) + '\\n```'
-    ))
-    print(text)
-    message.send_isti(text)
+    text = f'**{comment}:**\\n{make_code_block(st)}'
+    discord.send(settings['authorization'], settings['channel_id'], text)
 
 def loop():
     # st = status.get()
     st = None
     while True:
         print(f'check at: {datetime.datetime.now().isoformat()}')
-        new_st = status.get()
+        new_st = status.get(settings['stream_key_name'])
         now = datetime.datetime.now()
         if new_st != st:
             print('diff')

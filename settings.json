@@ -1,0 +1,5 @@
+{
+  "authorization": "The authorization key from Discord for the 'bot' account",
+  "channel_id": "The channel ID from Discord where the updates should be sent",
+  "stream_key_name": "The name of the stream key to be monitored (from YouTube)"
+}
