@@ -17,7 +17,8 @@ def make_code_block(state):
     )
 
 def update(comment, st):
-    text = f'**{comment}:**\\n{make_code_block(st)}'
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")
+    text = f'**{comment}:**\\n_({timestamp})_\\n{make_code_block(st)}'
     discord.send(settings['authorization'], settings['channel_id'], text)
 
 def loop():
