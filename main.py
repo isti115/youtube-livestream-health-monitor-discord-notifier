@@ -45,6 +45,7 @@ def loop():
             update('Midday status report', st)
             time.sleep(60 * 5)
         else:
+            no_data_first = True
             print('match')
             time.sleep(60 * 5)
 
